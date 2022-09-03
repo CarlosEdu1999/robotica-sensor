@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class Defense {
+public class AmbienteMicro {
 
-    private Integer physical;
-    private Integer magic;
-    private Integer fire;
-    private Integer lightining;
-    private Integer holy;
-    private Integer guardBoost;
+    private List<Sensor> sensores;
+    private String nome;
 }

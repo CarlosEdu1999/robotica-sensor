@@ -46,13 +46,9 @@ public class ItemController {
         return ResponseEntity.ok(itemService.update(nome, itemDTO));
     }
 
-    @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Ambiente> delete(@PathVariable String id) {
-        return ResponseEntity.ok(itemService.delete(id));
-    }
-
     @DeleteMapping("/deleteByNome/{nome}")
-    public ResponseEntity<Ambiente> deleteByNome(@PathVariable String nome) {
+    public ResponseEntity<Ambiente> delete(@PathVariable String nome) {
         return ResponseEntity.ok(itemService.deleteByNome(nome));
     }
+
 }

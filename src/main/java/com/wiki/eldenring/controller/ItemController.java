@@ -1,7 +1,7 @@
 package com.wiki.eldenring.controller;
 
-import com.wiki.eldenring.dto.AmbienteMacroDTO;
-import com.wiki.eldenring.model.AmbienteMacro;
+import com.wiki.eldenring.dto.AmbienteDTO;
+import com.wiki.eldenring.model.Ambiente;
 import com.wiki.eldenring.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,37 +22,37 @@ public class ItemController {
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<AmbienteMacro>> getItems() {
+    public ResponseEntity<Iterable<Ambiente>> getItems() {
         return ResponseEntity.ok(itemService.getItems());
     }
 
     @GetMapping("/getByNome/{nome}")
-    public ResponseEntity<AmbienteMacro> getByNome(@PathVariable String nome) {
+    public ResponseEntity<Ambiente> getByNome(@PathVariable String nome) {
         return ResponseEntity.ok(itemService.getByNome(nome));
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<AmbienteMacro> getItem(@PathVariable String id) {
+    public ResponseEntity<Ambiente> getItem(@PathVariable String id) {
         return ResponseEntity.ok(itemService.getItem(id));
     }
 
     @PostMapping
-    public ResponseEntity<AmbienteMacro> create(@RequestBody @Valid AmbienteMacroDTO itemDTO) {
+    public ResponseEntity<Ambiente> create(@RequestBody @Valid AmbienteDTO itemDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(itemService.create(itemDTO));
     }
 
-    @PutMapping("/alterar/{id}")
-    public ResponseEntity<AmbienteMacro> update(@PathVariable String id, @RequestBody @Valid AmbienteMacroDTO itemDTO) {
-        return ResponseEntity.ok(itemService.update(id, itemDTO));
+    @PutMapping("/alterar/{nome}")
+    public ResponseEntity<Ambiente> update(@PathVariable String nome, @RequestBody @Valid AmbienteDTO itemDTO) {
+        return ResponseEntity.ok(itemService.update(nome, itemDTO));
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<AmbienteMacro> delete(@PathVariable String id) {
+    public ResponseEntity<Ambiente> delete(@PathVariable String id) {
         return ResponseEntity.ok(itemService.delete(id));
     }
 
     @DeleteMapping("/deleteByNome/{nome}")
-    public ResponseEntity<AmbienteMacro> deleteByNome(@PathVariable String nome) {
+    public ResponseEntity<Ambiente> deleteByNome(@PathVariable String nome) {
         return ResponseEntity.ok(itemService.deleteByNome(nome));
     }
 }
